@@ -1,0 +1,48 @@
+{
+    "meta": {
+        "name": "PLink demo",
+        "id": "plink",
+        "version": "v1.0.0",
+        "repository": "https:\/\/github.com\/trendscenter\/coinstac-plink.git",
+        "description": "Plink for Gene data"
+    },
+    "computation": {
+        "type": "docker",
+        "dockerImage": "coinstac/plink",
+        "command" : [
+            "python",
+            "\/computation\/main.py"
+        ],
+        "remote":{
+            "type":"docker",
+            "dockerImage": "coinstac/plink",
+            "command": [
+                "python",
+                "\/computation\/main.py"
+            ]
+        },
+        "input": {
+            "cmd":{
+                "label": "Plink Command",
+                "description": "The Plink Command to be run",
+                "type": "string",
+                "source": "owner",
+                "values": ["--file toy --freq --out toy_analysis"]
+            },
+            "file":{
+                "label": "Files",
+                "description" : "Files mentioned in the above command",
+                "type": "files",
+                "min":1,
+                "max":4,
+                "extensions": ["map","ped"]   
+            }
+        },
+        "output":{
+            "analysis": {
+                "type": "files",
+                "label": "Analysis"
+            }
+        }
+    }
+}
