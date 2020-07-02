@@ -27,7 +27,7 @@
                 "description": "The Plink Command to be run",
                 "type": "string",
                 "source": "owner",
-                "values": ["--file toy --freq --out toy_analysis"]
+                "values": "--file toy --freq --out toy_analysis"
             },
             "file":{
                 "label": "Files",
@@ -42,6 +42,10 @@
             "analysis": {
                 "type": "files",
                 "label": "Analysis"
+            },
+            "download_outputs":{
+                "type":"string",
+                "description":"Download plink outputs here"
             }
         }
     }

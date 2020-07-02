@@ -4,7 +4,8 @@ import sys
 
 def main():
     doc = json.loads(sys.stdin.read())
-    cmd = './plink ' + '--file toy' + '--freq --out toy_analysis'
+    print(doc['input'].items())
+    cmd = './plink ' + '--file toy ' + '--freq --out toy_analysis'
     os.system(cmd)
 '''
 

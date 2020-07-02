@@ -1,0 +1,8 @@
+{
+    "cmd":{
+        "value":"--file toy --freq --out toy_analysis"
+    },
+    "file":{
+        "value":["toy.map","toy.ped"]
+    }
+}
