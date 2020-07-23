@@ -18,7 +18,7 @@
             "dockerImage": "coinstac/plink",
             "command": [
                 "python",
-                "\/computation\/main.py"
+                "\/computation\/main_remote.py"
             ]
         },
         "input": {
@@ -40,12 +40,8 @@
         },
         "output":{
             "analysis": {
-                "type": "files",
-                "label": "Analysis"
-            },
-            "download_outputs":{
-                "type":"string",
-                "description":"Download plink outputs here"
+                "type": "string",
+                "label": "Results"
             }
         }
     }
