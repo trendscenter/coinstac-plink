@@ -1,48 +1,60 @@
 {
-    "meta": {
-        "name": "PLink demo",
-        "id": "plink",
-        "version": "v1.0.0",
-        "repository": "https:\/\/github.com\/trendscenter\/coinstac-plink.git",
-        "description": "Plink for Gene data"
+  "meta": {
+    "name": "Plink Computatiion in COINSTAC",
+    "id": "coinstac-plink",
+    "version": "v1.0.0",
+    "repository": "https:\/\/github.com\/trendscenter\/coinstac-plink.git",
+    "description": "A way to use plink genetic analysis in COINSTAC.",
+    "compspecVersion": 2
+  },
+  "computation": {
+    "type": "docker",
+    "dockerImage": "coinstacteam/coinstac-plink",
+    "remote": {
+      "type": "docker",
+      "dockerImage": "coinstacteam/coinstac-plink"
     },
-    "computation": {
-        "type": "docker",
-        "dockerImage": "coinstac/plink",
-        "command" : [
-            "python",
-            "\/computation\/main.py"
+    "input": {
+      "command": {
+        "default": "./plink",
+        "label": "Main command",
+        "type": "string",
+        "source": "owner",
+        "order": 1
+      },
+      "data": {
+        "label": "Data",
+        "type": "files",
+        "items": [
+          "Files"
         ],
-        "remote":{
-            "type":"docker",
-            "dockerImage": "coinstac/plink",
-            "command": [
-                "python",
-                "\/computation\/main_remote.py"
-            ]
+        "extensions": [
+          "map",
+          "ped"
+        ],
+        "source": "member",
+        "order": 2
+      },
+      "command_args": {
+        "default": {
+          "--file": "toy",
+          "--freq": "",
+          "--out": "analysis_result"
         },
-        "input": {
-            "cmd":{
-                "label": "Plink Command",
-                "description": "The Plink Command to be run",
-                "type": "string",
-                "source": "owner",
-                "values": "--file toy --freq --out toy_analysis"
-            },
-            "file":{
-                "label": "Files",
-                "description" : "Files mentioned in the above command",
-                "type": "files",
-                "min":1,
-                "max":4,
-                "extensions": ["map","ped"]   
-            }
-        },
-        "output":{
-            "analysis": {
-                "type": "string",
-                "label": "Results"
-            }
-        }
+        "label": "Provide plink arguments as below",
+        "type": "object",
+        "source": "owner",
+        "order": 3
+      }
+    },
+    "output": {
+      "analysis": {
+        "type": "string",
+        "label": "Results"
+      }
+    },
+    "display": {
+      "type": "string"
     }
+  }
 }
