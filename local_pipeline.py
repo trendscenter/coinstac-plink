@@ -25,8 +25,8 @@ class PhaseRunPlink(ComputationPhase):
                 os.remove(f)
 
         for safe_file in [f for f in os.listdir(".") if f not in source_files]:
-            shutil.copy(safe_file, self.state["transferDirectory"])
             shutil.copy(safe_file, self.state["outputDirectory"])
+            # shutil.copy(safe_file, self.state["transferDirectory"])
 
         return {}
 
