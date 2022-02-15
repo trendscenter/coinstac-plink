@@ -1,0 +1,2 @@
+coinstac-computation~=0.68
+coinstac~=0.3
