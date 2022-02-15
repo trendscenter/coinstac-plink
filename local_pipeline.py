@@ -6,7 +6,6 @@ import shutil
 
 class PhaseRunPlink(ComputationPhase):
     def compute(self) -> dict:
-        out = {}
 
         source_files = os.listdir("_plink")
         for file in os.listdir(self.state["baseDirectory"]):
@@ -19,7 +18,7 @@ class PhaseRunPlink(ComputationPhase):
         args = " ".join(" ".join(args).split())
 
         os.chdir("_plink")
-        out['command_output'] = subprocess.getoutput(args)
+        _ = subprocess.getoutput(args)
 
         for f in source_files:
             if os.path.exists(f):
@@ -29,7 +28,7 @@ class PhaseRunPlink(ComputationPhase):
             shutil.copy(safe_file, self.state["transferDirectory"])
             shutil.copy(safe_file, self.state["outputDirectory"])
 
-        return out
+        return {}
 
 
 local = COINSTACPyNode(mode="local", debug=True)
