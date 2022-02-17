@@ -1,6 +1,6 @@
 {
   "meta": {
-    "name": "Plink Computatiion in COINSTAC",
+    "name": "Plink Computation in COINSTAC",
     "id": "coinstac-plink",
     "version": "v1.0.0",
     "repository": "https:\/\/github.com\/trendscenter\/coinstac-plink.git",
@@ -37,13 +37,17 @@
       },
       "plink_args": {
         "default": {
-          "--file": "toy",
-          "--freq": "",
-          "--out": "analysis_result"
+          "--bfile": "filename",
+          "--geno": 0.05,
+          "--maf": 0.01,
+          "--hwe": 1e-6,
+          "--mind": 0.1,
+          "--make-bed": "",
+          "--out": "filenameout_Binary"
         },
         "label": "Provide plink arguments as below",
         "type": "object",
-        "source": "owner",
+        "source": "member",
         "order": 3
       }
     },
