@@ -14,7 +14,7 @@ class PhaseRunPlink(ComputationPhase):
 
         args = [self.input_args["command"]]
         for k, v in self.input_args['plink_args'].items():
-            args += [k, v]
+            args += [k, f"{v}"]
         args = " ".join(" ".join(args).split())
 
         os.chdir("_plink")
